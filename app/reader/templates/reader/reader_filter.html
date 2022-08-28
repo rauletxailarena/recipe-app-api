@@ -1,0 +1,13 @@
+<h1>List of teachers</h1>
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+
+<ul>
+    {% for reader in reader_list %}
+        <li>
+            <a href="#">{{reader}}</a>
+        </li>
+    {% endfor %}
+</ul>
