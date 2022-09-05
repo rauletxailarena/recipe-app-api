@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -43,3 +42,12 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+class SocialNetworkUser(models.Model):
+    name = models.CharField(max_length=250)
+    followers = models.ManyToManyField('core.SocialNetworkUser')
+
+
+class Post(models.Model):
+    content = models.TextField()
+    created_by = models.ForeignKey(SocialNetworkUser, on_delete=models.DO_NOTHING)
